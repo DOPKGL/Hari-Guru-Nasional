@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hari Guru Nasional - SMPIT Bina Insani TJQ</title>
+<style>
+:root{--kertas:#f6efdc;--tinta:#33302a;--hijau:#2f5d4a;--merah:#a4452c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:var(--kertas);color:var(--tinta);line-height:1.7;overflow-x:hidden}
+.tulisan{font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive}
+
+header{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:10px 16px;
+background:var(--kertas);border-bottom:2px solid var(--tinta)}
+.logo{width:52px;height:52px;border-radius:50%;border:2px solid var(--tinta);overflow:hidden;flex:none;
+display:grid;place-items:center;font-size:9px;text-align:center;background:#fff;line-height:1.2}
+.logo img{width:100%;height:100%;object-fit:cover}
+header b{font-size:.95rem;line-height:1.25}
+
+.hero{padding:56px 22px 40px;max-width:680px;margin:auto}
+.hero small{color:var(--merah);letter-spacing:2px;font-weight:bold}
+.hero h1{font-size:clamp(2.1rem,9vw,3.6rem);line-height:1.15;margin:10px 0 16px}
+.hero h1 em{color:var(--hijau);font-style:italic}
+.hero p{font-size:1.1rem}
+
+section{max-width:680px;margin:auto;padding:36px 22px}
+h2{font-size:1.5rem;margin-bottom:18px;display:inline-block;border-bottom:3px solid var(--merah);padding-bottom:2px}
+
+/* Foto polaroid */
+.polaroid{background:#fff;padding:12px 12px 16px;box-shadow:0 6px 18px rgba(0,0,0,.2);
+transform:rotate(-2deg);position:relative;max-width:480px;margin:10px auto}
+.polaroid::before{content:"";position:absolute;top:-14px;left:50%;width:90px;height:28px;margin-left:-45px;
+background:rgba(230,205,140,.75);transform:rotate(3deg)}
+.polaroid img{width:100%;display:block}
+.polaroid .slot{aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:12px;
+background:#e9dfc4;color:#74663c;font-size:.9rem}
+.polaroid p{text-align:center;margin-top:12px;font-size:1.05rem}
+
+/* Catatan tulisan tangan */
+.catatan{background:#fffdf5;border:1px solid #d8cfae;padding:28px 24px;transform:rotate(1deg);
+box-shadow:2px 4px 10px rgba(0,0,0,.12);
+background-image:repeating-linear-gradient(transparent,transparent 31px,#cfd9e4 32px);
+transition:opacity .5s;min-height:170px}
+.catatan q{display:block;font-size:1.2rem;line-height:32px}
+.catatan span{display:block;margin-top:10px;color:var(--merah);line-height:32px}
+
+.surat p{margin-bottom:14px;font-size:1.05rem}
+.surat .ttd{color:var(--hijau);font-size:1.1rem}
+
+footer{margin-top:30px;padding:28px 20px;text-align:center;border-top:2px solid var(--tinta);font-size:.95rem}
+footer .pembuat{margin-top:8px;color:var(--merah)}
+
+/* Animasi halus saat muncul */
+.muncul{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.muncul.lihat{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><img src="logo.jpg" alt="Logo" onerror="this.parentNode.textContent='LOGO SEKOLAH'"></div>
+  <b>SMPIT Bina Insani TJQ</b>
+</header>
+
+<div class="hero muncul">
+  <small>HARI GURU NASIONAL · 25 NOVEMBER</small>
+  <h1>Terima kasih, <em>guru kami</em>.</h1>
+  <p>Kami mungkin belum pandai berkata-kata. Tapi setiap huruf yang kami bisa baca hari ini, ada jasa guru di baliknya.</p>
+</div>
+
+<section class="muncul">
+  <h2>Kelas 7A</h2>
+  <figure class="polaroid">
+    <div class="slot" id="slotFoto">Tempat foto kelas 7A<br>(simpan sebagai foto-7a.jpg)</div>
+    <p class="tulisan">7A bersama Ustadz GunGun</p>
+  </figure>
+</section>
+
+<section class="muncul">
+  <h2>Kata-kata untuk guru</h2>
+  <div class="catatan tulisan" id="catatan"><q></q><span></span></div>
+</section>
+
+<section class="muncul surat">
+  <h2>Untuk Ustadz GunGun</h2>
+  <p>Ustadz, terima kasih sudah sabar menghadapi kami di kelas 7A. Kami sering ribut, sering lupa tugas, tapi Ustadz tidak pernah bosan mengingatkan kami.</p>
+  <p>Kami baru sadar, sabar itu ternyata juga pelajaran. Dan Ustadz mengajarkannya tanpa pernah menulisnya di papan.</p>
+  <p>Semoga Allah membalas semua lelah Ustadz dengan kebaikan yang berlipat.</p>
+  <p class="ttd tulisan">Murid-muridmu, kelas 7A</p>
+</section>
+
+<footer>
+  Selamat Hari Guru Nasional<br>SMPIT Bina Insani TJQ
+  <div class="pembuat">Pembuat Website: Jibran F.A S.Kom</div>
+</footer>
+
+<script>
+// Foto kelas 7A: tampil kalau file ada
+const im = new Image(); im.src = 'foto-7a.jpg';
+im.onload = () => document.getElementById('slotFoto').replaceWith(im);
+
+// Kata-kata bergantian
+const kata = [
+ ["Guru itu lilin. Dia habis sedikit demi sedikit supaya kita bisa melihat.","Pepatah"],
+ ["Sebaik-baik kalian adalah yang belajar Al-Qur'an dan mengajarkannya.","HR. Bukhari"],
+ ["Terima kasih sudah mengajari kami dari tidak tahu menjadi tahu.","Murid 7A"],
+ ["Jasamu tak bisa kami bayar. Doa kami yang akan menemanimu.","Murid 7A"]
+];
+let k = 0; const box = document.getElementById('catatan');
+function ganti(){
+  box.style.opacity = 0;
+  setTimeout(() => {
+    box.querySelector('q').textContent = kata[k][0];
+    box.querySelector('span').textContent = '— ' + kata[k][1];
+    box.style.opacity = 1;
+    k = (k + 1) % kata.length;
+  }, 500);
+}
+ganti(); setInterval(ganti, 6000);
+
+// Muncul pelan saat di-scroll
+const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('lihat')), {threshold:.15});
+document.querySelectorAll('.muncul').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
